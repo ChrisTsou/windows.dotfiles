@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(**)",
+      "Bash(mv:*)",
+      "Bash(chezmoi:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:chezmoi.io)",
+      "WebSearch",
+      "Bash(rm:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
