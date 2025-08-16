@@ -1,0 +1,27 @@
+#!/usr/bin/env pwsh
+# Install WSL and arch linux
+
+$ErrorActionPreference = "Stop"
+
+Write-Host "Starting WSL and arch linux installation..." -ForegroundColor Green
+
+try {
+    # Check if arch linux distribution is already installed
+    $archInstalled = $false
+    try {
+        $distributions = wsl --list --quiet 2>$null
+        $archInstalled = $distributions | Where-Object { $_.Trim() -eq "arch" }
+    } catch {
+        # WSL not installed, will install it with the distribution
+    }
+
+    if (-not $archInstalled) {
+        wsl --install -d archlinux --name arch
+    }
+
+}
+catch {
+    Write-Error "Error during WSL/arch installation: $_"
+} 
+
+Write-Host "WSL and arch linux installation completed." -ForegroundColor Green
