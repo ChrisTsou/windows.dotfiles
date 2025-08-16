@@ -7,7 +7,9 @@
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:chezmoi.io)",
       "WebSearch",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "WebFetch(domain:www.chezmoi.io)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []

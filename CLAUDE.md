@@ -4,3 +4,4 @@
 # instructions
 - The main program I use is chezmoi
 - all code generated must be idempotent
+- try to use chezmoi and its templating to simlify code
