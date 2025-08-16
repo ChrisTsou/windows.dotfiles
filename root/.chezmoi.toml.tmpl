@@ -1,2 +1,5 @@
 [hooks.read-source-state.pre]
-script = "{{ .chezmoi.workingTree }}/scripts/setup-bitwarden.ps1"
+    script = "{{ .chezmoi.workingTree }}/scripts/setup-bitwarden.ps1"
+
+[data]
+    isAdmin = {{ output "powershell" "-Command" "& '" (joinPath .chezmoi.workingTree "scripts" "check_admin_privileges.ps1") "'; if ($LASTEXITCODE -eq 0) { 'true' } else { 'false' }" }}
