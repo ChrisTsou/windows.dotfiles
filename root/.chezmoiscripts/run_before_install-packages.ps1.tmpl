@@ -1,0 +1,26 @@
+# Install packages from packages.txt using winget
+$packagesFile = "{{ .chezmoi.workingTree }}\assets\packages.txt"
+
+if (-not (Test-Path $packagesFile)) {
+    Write-Host "Packages file not found at $packagesFile" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "Installing packages from $packagesFile" -ForegroundColor Green
+
+# Read packages file and filter out comments and empty lines
+$packages = Get-Content $packagesFile | Where-Object { $_ -notmatch '^#' -and $_ -notmatch '^\s*$' }
+
+if ($packages.Count -eq 0) {
+    Write-Host "No packages found in $packagesFile" -ForegroundColor Yellow
+    exit 0
+}
+
+# Create winget command with all package IDs
+$packageIds = $packages | ForEach-Object { "$($_.Trim())" }
+$wingetCmd = "winget install $($packageIds -join ' ') --silent --accept-package-agreements --accept-source-agreements"
+
+Write-Host "Installing $($packages.Count) packages..." -ForegroundColor Cyan
+Write-Host $wingetCmd -ForegroundColor Gray
+
+Invoke-Expression $wingetCmd

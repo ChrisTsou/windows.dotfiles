@@ -1,0 +1,15 @@
+# Winget packages to install
+# Add one package ID per line
+# Lines starting with # are comments
+
+# Development tools
+Microsoft.VisualStudioCode
+Git.Git
+Microsoft.PowerToys
+
+# Browsers
+Mozilla.Firefox
+
+# Utilities
+7zip.7zip
+Microsoft.WindowsTerminal

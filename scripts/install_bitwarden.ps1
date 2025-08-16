@@ -22,5 +22,3 @@ if (-not (Get-Command bw -ErrorAction SilentlyContinue)) {
 } else {
     Write-Host "Bitwarden CLI is already installed."
 }
-
-Write-Host "Bitwarden CLI installation complete."
