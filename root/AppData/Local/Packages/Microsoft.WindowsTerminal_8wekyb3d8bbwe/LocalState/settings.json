@@ -373,6 +373,10 @@
     {
         "defaults": 
         {
+            "font": 
+            {
+                "face": "FiraCode Nerd Font"
+            },
             "closeOnExit": "always"
         },
         "list": 

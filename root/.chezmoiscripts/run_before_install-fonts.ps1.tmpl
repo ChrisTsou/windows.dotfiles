@@ -1,0 +1,19 @@
+# This script needs to be run with administrative privileges to install fonts.
+# It is not indempotent, cannot really check if a font is already installed.
+# TODO: Occasionaly check if:
+# - windows terminal has been improved to detect user fonts and machine wide font installation is not required
+# - or it is now possible to detect if a font is already installed
+
+Write-Host "Starting font installation..." -ForegroundColor Green
+
+$SourceDir = "{{ .chezmoi.workingTree }}\assets"
+# Font special folder
+# 0x14 is the CSIDL value for Fonts
+# https://richardspowershellblog.wordpress.com/2008/03/20/special-folders/
+$Destination = (New-Object -ComObject Shell.Application).Namespace(0x14)
+
+Get-ChildItem -Path "$SourceDir\*" -Include '*.ttf','*.ttc','*.otf' -Recurse | ForEach-Object {
+    $Destination.CopyHere($_.FullName, 0x10)
+}
+
+Write-Host "Font installation complete" -ForegroundColor Green

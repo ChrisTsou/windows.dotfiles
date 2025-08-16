@@ -16,6 +16,7 @@ if (!$?) {
     }
 }
 
-Write-Host "Bitwarden session established." -ForegroundColor Green
-
 bw sync
+
+Write-Host ""
+Write-Host "Bitwarden session established." -ForegroundColor Green
