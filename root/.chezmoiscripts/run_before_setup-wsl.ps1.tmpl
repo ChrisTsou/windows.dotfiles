@@ -16,10 +16,7 @@ try {
     }
 
     if (-not $archInstalled) {
-        wsl --install -d archlinux --name arch
-        
-        # Setup users after installation
-        $username = $env:USERNAME.ToLower()
+        wsl --install -d archlinux --name arch --no-launch
         
         # Initialize pacman keyring and update system
         wsl -d arch -- pacman-key --init
@@ -29,14 +26,23 @@ try {
         # Install sudo and zsh
         wsl -d arch -- pacman -S --noconfirm sudo zsh
         
-        # Create user with same name as Windows user
-        wsl -d arch -- useradd -m -G wheel -s /bin/zsh $username
+        # Setup users after installation
+        $username = $env:USERNAME.ToLower()
+        
+        # Create user with same name as Windows user (using default shell first)
+        wsl -d arch -- useradd -m -G wheel $username
         
         # Set default user to the created user
-        wsl -d arch -- /bin/bash -c "echo -e '[user]\ndefault=$username' > /etc/wsl.conf"
+        wsl -d arch -u root -- sh -c "echo -e '[user]\\ndefault=$username' > /etc/wsl.conf"
         
         # Enable wheel group for passwordless sudo
-        wsl -d arch -- /bin/bash -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
+        wsl -d arch -u root -- sh -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
+        
+        # Change user shell to zsh
+        wsl -d arch -u root -- usermod -s /bin/zsh $username
+        
+        # Terminate WSL to apply configuration changes
+        wsl --terminate arch
     }
 
 }
