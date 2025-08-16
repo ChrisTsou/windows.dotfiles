@@ -9,7 +9,8 @@
       "WebSearch",
       "Bash(rm:*)",
       "WebFetch(domain:www.chezmoi.io)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,63 @@
+#!/usr/bin/env pwsh
+# Debloat script with custom apps list
+
+$ErrorActionPreference = "Stop"
+
+# Self-elevate the script if required
+if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
+  if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
+    $CommandLine = "-File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
+    Start-Process -Wait -FilePath PowerShell.exe -Verb Runas -ArgumentList $CommandLine
+    Exit
+  }
+}
+
+Write-Host "Starting Win11 Debloat process..." -ForegroundColor Green
+
+try {
+    # Copy debloat-apps-list from assets to execution root and rename
+    $sourceFile = "{{ .chezmoi.workingTree }}\assets\debloat-apps-list.txt"
+    $customAppsListPath = Join-Path $PSScriptRoot "CustomAppsList"
+    
+    Copy-Item $sourceFile $customAppsListPath -Force
+    
+    # Run Win11Debloat script with selected parameters
+    & ([scriptblock]::Create((Invoke-RestMethod "https://debloat.raphi.re/"))) `
+        -Silent `
+        -RemoveAppsCustom `
+        -ClearStartAllUsers `
+        -DisableStartRecommended `
+        -DisableStartPhoneLink `
+        -DisableTelemetry `
+        -DisableSuggestions `
+        -DisableEdgeAds `
+        -DisableDesktopSpotlight `
+        -DisableLockscreenTips `
+        -DisableSettings365Ads `
+        -DisableBing `
+        -DisableCopilot `
+        -DisableRecall `
+        -DisableEdgeAI `
+        -DisablePaintAI `
+        -DisableNotepadAI `
+        -DisableMouseAcceleration `
+        -DisableStickyKeys `
+        -DisableFastStartup `
+        -ShowHiddenFolders `
+        -ShowKnownFileExt `
+        -HideDupliDrive `
+        -TaskbarAlignLeft `
+        -HideSearchTb `
+        -DisableWidgets `
+        -DisableChat
+    
+} catch {
+    Write-Error "Error during debloat process: $_"
+} finally {
+    # Clean up the CustomAppsList file
+    if (Test-Path $customAppsListPath) {
+        Remove-Item $customAppsListPath -Force
+    }
+}
+
+Write-Host "Win11 Debloat process completed." -ForegroundColor Green
