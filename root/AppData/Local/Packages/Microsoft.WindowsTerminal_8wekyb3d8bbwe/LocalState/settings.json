@@ -1,6 +1,48 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "arch",
+    "disabledProfileSources": 
+    [
+        "Windows.Terminal.Wsl",
+        "Windows.Terminal.Azure",
+        "Windows.Terminal.PowershellCore"
+    ],
+    "launchMode": "maximized",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "schemes": [],
+    "themes": [],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "closeOnExit": "always",
+            "font": 
+            {
+                "face": "FiraCode Nerd Font"
+            }
+        },
+        "list": 
+        [
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "icon": "ms-appdata:///roaming/powershell.ico",
+                "name": "PowerShell"
+            },
+            {
+                "commandline": "wsl.exe -d arch",
+                "icon": "ms-appdata:///roaming/archlinux.ico",
+                "name": "Arch"
+            }
+        ]
+    },
     "actions": 
     [
         {
@@ -54,76 +96,23 @@
             "id": "User.closeWindow"
         }
     ],
-    "copyFormatting": "none",
-    "copyOnSelect": false,
-    "defaultProfile": "arch",
-    "disabledProfileSources": 
-    [
-        "Windows.Terminal.Wsl",
-        "Windows.Terminal.Azure",
-        "Windows.Terminal.PowershellCore"
-    ],
     "keybindings": 
     [
         {
-            "id": null,
-            "keys": "ctrl+comma"
-        },
-        {
             "id": "Terminal.FindText",
             "keys": "ctrl+shift+f"
-        },
-        {
-            "id": null,
-            "keys": "alt+right"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+numpad_minus"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+minus"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+plus"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+3"
         },
         {
             "id": "User.CloseTab",
             "keys": "ctrl+shift+i"
         },
         {
-            "id": null,
-            "keys": "alt+shift+right"
-        },
-        {
             "id": "Terminal.ClosePane",
             "keys": "ctrl+shift+c"
         },
         {
-            "id": null,
-            "keys": "alt+down"
-        },
-        {
             "id": "Terminal.ScrollDown",
             "keys": "ctrl+shift+t"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+4"
-        },
-        {
-            "id": null,
-            "keys": "alt+shift+down"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+tab"
         },
         {
             "id": "User.MoveFocusNextInOrder",
@@ -134,40 +123,12 @@
             "keys": "alt+f4"
         },
         {
-            "id": null,
-            "keys": "ctrl+shift+pgdn"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+pgup"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+numpad0"
-        },
-        {
-            "id": null,
-            "keys": "f11"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+period"
-        },
-        {
-            "id": null,
-            "keys": "alt+shift+left"
-        },
-        {
             "id": "Terminal.ScrollUp",
             "keys": "ctrl+shift+n"
         },
         {
             "id": "Terminal.NextTab",
             "keys": "ctrl+shift+b"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+up"
         },
         {
             "id": "Terminal.OpenNewTab",
@@ -182,16 +143,8 @@
             "keys": "ctrl+enter"
         },
         {
-            "id": null,
-            "keys": "alt+shift+up"
-        },
-        {
             "id": "Terminal.CopyToClipboard",
             "keys": "ctrl+shift+y"
-        },
-        {
-            "id": null,
-            "keys": "shift+insert"
         },
         {
             "id": "Terminal.PasteFromClipboard",
@@ -200,10 +153,6 @@
         {
             "id": "Terminal.DuplicatePaneAuto",
             "keys": "ctrl+shift+a"
-        },
-        {
-            "id": null,
-            "keys": "menu"
         },
         {
             "id": "User.MoveFocusPreviousInOrder",
@@ -218,181 +167,232 @@
             "keys": "ctrl+shift+g"
         },
         {
-            "id": null,
+            "id": "unbound",
+            "keys": "ctrl+comma"
+        },
+        {
+            "id": "unbound",
+            "keys": "alt+right"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+numpad_minus"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+minus"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+plus"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+shift+3"
+        },
+        {
+            "id": "unbound",
+            "keys": "alt+shift+right"
+        },
+        {
+            "id": "unbound",
+            "keys": "alt+down"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+shift+4"
+        },
+        {
+            "id": "unbound",
+            "keys": "alt+shift+down"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+tab"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+shift+pgdn"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+shift+pgup"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+numpad0"
+        },
+        {
+            "id": "unbound",
+            "keys": "f11"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+shift+period"
+        },
+        {
+            "id": "unbound",
+            "keys": "alt+shift+left"
+        },
+        {
+            "id": "unbound",
+            "keys": "ctrl+shift+up"
+        },
+        {
+            "id": "unbound",
+            "keys": "alt+shift+up"
+        },
+        {
+            "id": "unbound",
+            "keys": "shift+insert"
+        },
+        {
+            "id": "unbound",
+            "keys": "menu"
+        },
+        {
+            "id": "unbound",
             "keys": "ctrl+shift+2"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+5"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+comma"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+0"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+insert"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+6"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "enter"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "alt+shift+plus"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "alt+space"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+numpad_plus"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+left"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+1"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+7"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+home"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+8"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+9"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+comma"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+end"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "win+sc(41)"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "alt+enter"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+m"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "alt+shift+minus"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "alt+left"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "alt+up"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+v"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+tab"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+shift+down"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+1"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+2"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+3"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+7"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+4"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+5"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+6"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+8"
         },
         {
-            "id": null,
+            "id": "unbound",
             "keys": "ctrl+alt+9"
         }
-    ],
-    "launchMode": "maximized",
-    "newTabMenu": 
-    [
-        {
-            "type": "remainingProfiles"
-        }
-    ],
-    "profiles": 
-    {
-        "defaults": 
-        {
-            "font": 
-            {
-                "face": "FiraCode Nerd Font"
-            },
-            "closeOnExit": "always"
-        },
-        "list": 
-        [
-            {
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "icon": "ms-appdata:///roaming/powershell.ico",
-                "name": "PowerShell"
-            },
-            {
-                "commandline": "wsl.exe -d arch",
-                "icon": "ms-appdata:///roaming/archlinux.ico",
-                "name": "Arch"
-            }
-        ]
-    },
-    "schemes": [],
-    "themes": []
+    ]
 }

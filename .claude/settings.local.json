@@ -9,10 +9,12 @@
       "WebFetch(domain:learn.microsoft.com)",
       "Bash(git add:*)",
       "Bash(git config:*)",
-      "Bash(wsl:*)",
-      "Bash(git commit:*)"
+      "Bash(wsl:*)"
     ],
     "deny": [],
-    "ask": []
-  }
+    "ask": [
+      "Bash(git commit:*)"
+    ]
+  },
+  "includeCoAuthoredBy": false
 }
