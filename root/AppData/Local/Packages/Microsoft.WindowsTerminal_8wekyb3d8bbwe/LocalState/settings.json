@@ -100,11 +100,11 @@
     [
         {
             "id": "Terminal.FindText",
-            "keys": "ctrl+shift+f"
+            "keys": "ctrl+shift+/"
         },
         {
             "id": "User.CloseTab",
-            "keys": "ctrl+shift+i"
+            "keys": "ctrl+shift+d"
         },
         {
             "id": "Terminal.ClosePane",
@@ -160,7 +160,7 @@
         },
         {
             "id": "User.palette",
-            "keys": "ctrl+shift+space"
+            "keys": "ctrl+shift+enter"
         },
         {
             "id": "Terminal.PrevTab",
