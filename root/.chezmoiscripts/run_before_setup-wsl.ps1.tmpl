@@ -1,6 +1,8 @@
 #!/usr/bin/env pwsh
 # Install WSL and arch linux
 
+$distributionName = "arch"
+
 $ErrorActionPreference = "Stop"
 
 Write-Host "Starting WSL and arch linux installation..." -ForegroundColor Green
@@ -16,36 +18,36 @@ try {
     }
 
     if (-not $archInstalled) {
-        wsl --install -d archlinux --name arch --no-launch
-        
+        wsl --install -d archlinux --name $distributionName --no-launch
+
         # Initialize pacman keyring and update system
-        wsl -d arch -- pacman-key --init
-        wsl -d arch -- pacman-key --populate archlinux
-        wsl -d arch -- pacman -Syu --noconfirm
-        
+        wsl -d $distributionName -- pacman-key --init
+        wsl -d $distributionName -- pacman-key --populate archlinux
+        wsl -d $distributionName -- pacman -Syu --noconfirm
+
         # Install sudo and zsh
-        wsl -d arch -- pacman -S --noconfirm sudo zsh
-        
+        wsl -d $distributionName -- pacman -S --noconfirm sudo zsh
+
         # Setup users after installation
         $username = $env:USERNAME.ToLower()
-        
+
         # Create user with same name as Windows user (using default shell first)
-        wsl -d arch -- useradd -m -G wheel $username
-        
+        wsl -d $distributionName -- useradd -m -G wheel $username
+
         # Set default user to the created user
-        wsl -d arch -u root -- sh -c "echo -e '[user]\\ndefault=$username' > /etc/wsl.conf"
+        wsl -d $distributionName -u root -- sh -c "echo -e '[user]\ndefault=$username' > /etc/wsl.conf"
 
         # Set wsl to use systemd
-        wsl -d arch -u root -- sh -c "echo -e '[boot]\\nsystemd=true' >> /etc/wsl.conf"
-        
+        wsl -d $distributionName -u root -- sh -c "echo -e '[boot]\nsystemd=true' >> /etc/wsl.conf"
+
         # Enable wheel group for passwordless sudo
-        wsl -d arch -u root -- sh -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
-        
+        wsl -d $distributionName -u root -- sh -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
+
         # Change user shell to zsh
-        wsl -d arch -u root -- usermod -s /bin/zsh $username
-        
+        wsl -d $distributionName -u root -- usermod -s /bin/zsh $username
+
         # Terminate WSL to apply configuration changes
-        wsl --terminate arch
+        wsl --terminate $distributionName
     }
 
 }
